@@ -1,11 +1,15 @@
 import logo from './logo.svg';
-import { Counter } from './features/counter/counter';
-import { Comment } from './features/comment/comment';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Comments } from './features/comments/comments';
+import { CommentsForm } from './features/comments/commentsForm';
+import { Navbarmain } from './features/navbarmain/navbarmain';
 import './App.css';
 
 function App() {
   return (
+  <Router>
     <div className="App">
+        <Navbarmain />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -19,10 +23,13 @@ function App() {
         >
           Learn React
         </a>
-        <Counter />
-        <Comment />
       </header>
     </div>
+    <Routes>
+      <Route path="/comments" element={<Comments/>}></Route>
+      <Route path="/create" element={<CommentsForm/>}></Route>
+    </Routes>
+  </Router>
   );
 }
 
